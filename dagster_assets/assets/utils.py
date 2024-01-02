@@ -16,6 +16,7 @@ def observe_raw_assets_partitions_fn(context: OpExecutionContext) -> DataVersion
     source_path = path.join(DATA_PATH, "raw", asset_key[1], asset_key[2])
 
     data_partitions = glob.glob(f"{source_path}/*.csv")
+    data_partitions = [path_.split("/")[-1].replace(".csv", "") for path_ in data_partitions]
 
     if len(data_partitions) > 0:
         partitions = {date: date for date in data_partitions}
