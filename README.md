@@ -18,8 +18,12 @@ docker run -p 3000:3000 --rm -it -v ${PWD}/data/:/user_code/data/ dagster-assets
 
 Open http://localhost:3000 with your browser to see Dagster UI.
 
-TODO generate a raw data and lookup with job named 'create_data_job' with default config from launchpad.
+Generate a raw data and lookup table with job named 'create_data_job' with default config from launchpad.
 
-TODO observe SourceAssets from Assset -> asset lineage 
+Next step go to the "Assets" page, then to "View global asset lineage":
 
-TODO Materialize daily assets by partitions
+Click "Observe sources", to observe our "raw" data and check daily partitioned data for each of SourceAsset.
+
+You can check that raw data was created correctly, if you see all four partitions (from 2024-01-01 to 2023-01-04) in asset catalog with expanded info about each of asset.
+
+Materialize dependent Assets simultaneously or separately for the desired dates. After this, you can view aggregated information in the “plots” Dagster UI page or full tables for analytics in the corresponding directory (by default ./data)
