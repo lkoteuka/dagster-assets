@@ -2,7 +2,8 @@ from dagster import AssetKey, SourceAsset
 
 
 """
-## Schema
+Table: 'payment_code_type'
+Schema:
 
 | payment_code | payment_type |
 |--------------|--------------|

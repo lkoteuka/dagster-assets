@@ -17,14 +17,14 @@ class DailyIOManager(IOManager):
 
     def handle_output(self, context: OutputContext, obj: pd.DataFrame):
         """Write data"""
-        data_path: str = context.resource_config.get("data_path")
+
         partition_date = ""
         if context.has_partition_key:
             partition_date = context.asset_partition_key
 
         asset_key: list[str] = context.asset_key.path
         table_path = path.join(path.join(path.join(path.dirname(__file__), pardir), pardir),
-                               data_path,
+                               context.resource_config.get("data_path"),
                                *asset_key)
 
         if not path.exists(table_path):
@@ -55,12 +55,7 @@ class DailyIOManager(IOManager):
                                *asset_key)
         context.log.info(f"Try load `{asset_key}`")
 
-        if asset_key[0] == "raw":
-            # We can't overwrite raw data, so just pass this step
-            table_path = path.join(table_path, partition_date)
-            context.log.info(f"Read `{table_path}.csv`")
-            return pd.read_csv(f"{table_path}.csv")
-        elif asset_key[0] == "daily":
+        if asset_key[0] in ["raw", "daily"]:
             # Separate file for each date partition
             table_path = path.join(table_path, partition_date)
             context.log.info(f"Read `{table_path}.csv`")

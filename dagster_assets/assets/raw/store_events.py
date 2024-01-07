@@ -7,7 +7,8 @@ from dagster_assets.config import RAW_GROUP, ASSET_DAILY_PARTITION_START_DATE, O
 OBJECT_NAME = "store_events"
 
 """
-## Schema
+Table: 'store_events'
+Schema:
 
 | company_id | store_id | payment_code | revenue |
 |------------|----------|--------------|---------|

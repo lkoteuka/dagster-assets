@@ -5,7 +5,8 @@ from dagster import DailyPartitionsDefinition, AssetKey, Output
 from dagster_assets.config import ASSET_DAILY_PARTITION_START_DATE, ASSET_DAILY_PARTITION_END_DATE
 
 """
-## Schema
+Table: 'payment_type_revenue_daily'
+Schema:
 
 | date | payment_code | sum(revenue) as revenue | sum(event_count) as event_count |
 |------|--------------|-------------------------|---------------------------------|

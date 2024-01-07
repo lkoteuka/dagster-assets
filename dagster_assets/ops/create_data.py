@@ -40,7 +40,7 @@ def create_raw_data_op(context: OpExecutionContext):
     if from_date > to_date:
         raise ValueError(f"to_date must be greater than from_date.")
 
-    while from_date <= to_date:
+    while from_date < to_date:
         context.log.info(f"Create raw data for date: '{from_date.strftime(DATE_FORMAT)}'")
         for data_center in data_centers:
             raw_dc_path = path.join(data_path, "raw", data_center, OBJECT_NAME)

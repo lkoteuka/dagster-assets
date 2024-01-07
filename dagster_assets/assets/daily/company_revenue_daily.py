@@ -7,7 +7,8 @@ from dagster_assets.config import ASSET_DAILY_PARTITION_START_DATE, ASSET_DAILY_
 KEY_COLUMNS = ["company_id", "store_id", "payment_code"]
 
 """
-## Schema
+Table: 'company_revenue_daily'
+Schema:
 
 | date | company_id | store_id | payment_code | sum(revenue) as revenue | count(*) as event_count |
 |------|------------|----------|--------------|-------------------------|-------------------------|
